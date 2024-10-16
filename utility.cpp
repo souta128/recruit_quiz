@@ -9,7 +9,7 @@ vector<int> CreatRandomIndices(int n) {
 	//”Ô†‚ğ”z—ñ‚ÉŠi”[
 	vector<int> indices(n);
 	for (int i = 0; i < n; i++){
-		indices[i];
+		indices[i] = i;
 	}
 
 
@@ -42,7 +42,7 @@ void Shuffle(vector<int>&indices)
 /*
 *ŠÔˆá‚Á‚½”Ô†‚Ì”z—ñ
 */
-vector<int> CreatWrongIndices(int n, int correctIndex) {
+vector<int> CreateWrongIndices(int n, int correctIndex) {
 	//”Ô†‚ğ”z—ñ‚ÉŠi”[
 	vector<int> indices(n - 1);
 	for (int i = 0; i < correctIndex; i++) {

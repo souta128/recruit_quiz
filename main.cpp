@@ -111,6 +111,8 @@ int main()
 	cin >> subject;
 	if (subject == 2) {
 		questions = CreatKanjiExam();
+		const QuestionList idiomExam = CreateIdiomExam();
+		questions.insert(questions.end(), idiomExam.begin(), idiomExam.end());
 	}
 
 
