@@ -1,15 +1,11 @@
+#include"question.h"
 #include<iostream>
-#include<string>
 #include<vector>
 #include<random>
+#include<string>
+
 using namespace std;
 
-//問題文と答えをまとめる構造体
-struct Question
-{
-	string q;
-	string a;
-};
 
 //最大公約数を求める
 int gcd(int a, int b) {
@@ -87,7 +83,7 @@ int main()
 	y = uniform_int_distribution<>(1, x)(rand);
 	z = 1;
 	for (int i = 0; i < y; i++) {
-		z *= x - 1;
+		z *= x - i;
 	}
 	questions.push_back({
 		to_string(x) + "人のうち" + to_string(y) + "人を選んで並べる方法は何通りあるか？",
@@ -99,7 +95,10 @@ int main()
 	y = uniform_int_distribution<>(1,x)(rand);
 	z = 1;
 	for (int i = 0; i < y; i++) {
-		z *= y - 1;
+		z *= x - i;
+	}
+	for (int i = 0; i < y; i++) {
+		z /= y - i;
 	}
 	questions.push_back({
 		to_string(x) + "人のうち" + to_string(y) + "人を選ぶ組み合わせは何通りあるか？",
