@@ -1,5 +1,6 @@
 #include"exam_japanese.h"
 #include"utility.h"
+#include<random>
 using namespace std;
 
 /*
@@ -16,16 +17,49 @@ QuestionList CreatKanjiExam() {
 	{"相殺", "そうさい","足し匹の結果、差がなくなること"},
 	{"凡例", "はんれい","本や図表の初めに、使い方や約束事を箇条書きにしたもの"},
 	{"約定", "やくじょう","約束して決めること、契約"},
-};
+	};
 
-	constexpr int quizConst = 5;
+	constexpr int quizCount = 5;
 	QuestionList questions;
-	questions.reserve(quizConst);
+	questions.reserve(quizCount);
 	const vector<int> indices = CreatRandomIndices(size(data));
-	for (int i = 0; i < quizConst; i++) {
-		const auto& e = data[indices[i]];
-		questions.push_back({
-		"「" + string(e.kanji) + "「の読みを平仮名で答えよ",
-		e.reading });
+	random_device rd;
+
+	// 問題の種類を選ぶ
+	int type = uniform_int_distribution<>(0, 1)(rd);
+	if (type == 0) {
+		// 漢字の読みを答える問題
+		for (int i = 0; i < quizCount; i++) {
+			const auto& e = data[indices[i]];
+			questions.push_back({
+			"「" + string(e.kanji) + "「の読みを平仮名で答えよ",
+			e.reading });
+		}
 	}
+	else {
+		// 正しい熟語を答える問題
+		for (int i = 0; i < quizCount; i++) {
+			// 間違った番号をランダムに選ぶ
+			const int correctIndex = indices[i];
+			vector<int> answers = CreateWrongIndices(size(data), correctIndex);
+
+			// ランダムな位置を正しい番号で上書き
+			const int correctNo = std::uniform_int_distribution<>(1, 3)(rd);
+			answers[correctNo - 1] = correctIndex;
+
+			// 問題文を作成
+			string s = "「" + string(data[correctIndex].meaning) +
+				"」を意味する熟語の番号を選べ";
+			for (int j = 0; j < 3; j++) {
+				s += "\n  " + to_string(j + 1) + ":" + data[answers[j]].kanji;
+
+			}
+
+			questions.push_back({ s, to_string(correctNo) });
+
+		}
+
+	} // if type
+
 	return questions;
+}
