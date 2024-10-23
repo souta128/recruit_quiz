@@ -5,7 +5,7 @@
 void Shuffle(std::vector<int>& indices);
 
 //ƒ‰ƒ“ƒ_ƒ€‚È”Ô†”z—ñ‚ğì¬
-std::vector<int> CreatRandomIndices(int n);
+std::vector<int> CreateRandomIndices(int n);
 
 //ŠÔˆá‚Á‚½”Ô†‚Ì”z—ñ‚ğì¬‚·‚é
 //n        ì¬‚·‚é”Ô†‚Ì”ÍˆÍ

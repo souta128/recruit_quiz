@@ -5,7 +5,7 @@ using namespace std;
 /*
 *ƒ‰ƒ“ƒ_ƒ€‚È”Ô†”z—ñ‚ğì¬
 */
-vector<int> CreatRandomIndices(int n) {
+vector<int> CreateRandomIndices(int n) {
 	//”Ô†‚ğ”z—ñ‚ÉŠi”[
 	vector<int> indices(n);
 	for (int i = 0; i < n; i++){
