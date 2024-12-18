@@ -221,6 +221,7 @@
 
 
 		 { // U‚èq
+
 				int l = uniform_int_distribution<>(1, 10)(rd); // ’·‚³(m)‚Ì•½•ûª
 				int m = uniform_int_distribution<>(1, 10)(rd); // ¿—Ê(g)
 				questions.push_back({
