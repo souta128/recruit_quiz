@@ -29,16 +29,16 @@ int main()
 	mt19937 rand(rd());
 
 	//掛け算
-	int x = uniform_int_distribution<>(1,30)(rand);
-	int y = uniform_int_distribution<>(1,20)(rand);
+	int x = uniform_int_distribution<>(1, 30)(rand);
+	int y = uniform_int_distribution<>(1, 20)(rand);
 	questions[0].q = to_string(x) + "x" + to_string(y) + "答えは？";
 	questions[0].a = to_string(x * y);
 
 	//割り算
 	x = uniform_int_distribution<>(1, 30)(rand);
 	y = uniform_int_distribution<>(1, 20)(rand);
-	questions[1].q = to_string(x*y) + " / " + to_string(y) + "答えは？";
-	questions[1].a = to_string(x) ;
+	questions[1].q = to_string(x * y) + " / " + to_string(y) + "答えは？";
+	questions[1].a = to_string(x);
 
 	//複雑な式
 	x = uniform_int_distribution<>(1, 100)(rand);
@@ -46,7 +46,7 @@ int main()
 	int z = uniform_int_distribution<>(1, 10)(rand);
 	int w = uniform_int_distribution<>(1, 10)(rand);
 	questions[2].q =
-		to_string(x) + "-(" + to_string(y*w) + "+" + to_string(z*w) + ")/" + to_string(w) + "答えは？";
+		to_string(x) + "-(" + to_string(y * w) + "+" + to_string(z * w) + ")/" + to_string(w) + "答えは？";
 	questions[2].a = to_string(x - (y + z));
 
 	//三角形の面積
@@ -63,14 +63,14 @@ int main()
 	questions.push_back({
 		"底面の半径" + to_string(x) + "cm , 高さ" + to_string(y) + "cmの円錐がある。\n" +
 		"この円錐の体積をXπcm^3とする。Xの値を求めよ。\n" ,
-		to_string(x * x * y / 3)});
+		to_string(x * x * y / 3) });
 
 	//球の体積
 	x = uniform_int_distribution<>(1, 10)(rand);
 	questions.push_back({
-		"半径" + to_string(x) +  "cmの球がある。\n" +
+		"半径" + to_string(x) + "cmの球がある。\n" +
 		"この球の体積をXπcm^3とする。Xの値を求めよ。\n" ,
-		to_string(x * x * x  * 4 / 3) });
+		to_string(x * x * x * 4 / 3) });
 
 
 	//さいころの確率
@@ -96,7 +96,7 @@ int main()
 
 	//組み合わせ
 	x = uniform_int_distribution<>(3, 6)(rand);
-	y = uniform_int_distribution<>(1,x)(rand);
+	y = uniform_int_distribution<>(1, x)(rand);
 	z = 1;
 	for (int i = 0; i < y; i++) {
 		z *= x - i;
@@ -109,7 +109,7 @@ int main()
 		to_string(z) });
 	cout << "[リクルート試験対策クイズ]\n";
 
-	cout << "教科を選んでください\n1=数学\n2=国語\n3=英語\n4=物理\n5=地理\n";	
+	cout << "教科を選んでください\n1=数学\n2=国語\n3=英語\n4=物理\n5=地理\n";
 	int subject;
 	cin >> subject;
 	if (subject == 2) {
@@ -136,17 +136,18 @@ int main()
 
 
 
-	for (const auto& e : questions) {
-		cout << e.q << "\n";
-		string answer;
-		cin >> answer;
-		if (answer == e.a) {
-		cout << "正解\n";
+		for (const auto& e : questions) {
+			cout << e.q << "\n";
+			string answer;
+			cin >> answer;
+			if (answer == e.a) {
+				cout << "正解\n";
+			}
+			else {
+				cout << "間違い！正解は" << e.a << "\n";
+			}//for questions
 		}
-		else {
-		cout << "間違い！正解は" << e.a << "\n";
-		}//for questions
+
+
 	}
-	
-	
 }
