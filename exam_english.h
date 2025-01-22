@@ -6,3 +6,5 @@ QuestionList CreateEnglishWordExam();
 
 // ‰pŒê‚Ì’èŒ^•¶‚Ì–â‘è‚ğì¬‚·‚é
 QuestionList CreateEnglishPhraseExam();
+
+QuestionList CreateEnglishExam();
